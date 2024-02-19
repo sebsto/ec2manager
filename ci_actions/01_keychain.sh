@@ -8,6 +8,7 @@ echo "Certificates directory: $CERTIFICATES_DIR"
 
 echo "Cleaning Provisioning Profiles"
 rm -rf "$HOME/Library/MobileDevice/Provisioning Profiles"
+mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
 
 echo "Prepare keychain"
 KEYCHAIN_PASSWORD=Passw0rd
