@@ -14,15 +14,15 @@ export LANG=en_US.UTF-8
 
 export HOME=/Users/ec2-user
 export CODE_DIR=$HOME/ec2manager # default value
-# if [ ! -z ${GITHUB_ACTION} ]; then # we are running from a github runner
-#     export CODE_DIR=$GITHUB_WORKSPACE/code
-# fi
-# if [ ! -z ${CI_BUILDS_DIR} ]; then # we are running from a gitlab runner
-#     export CODE_DIR=$CI_PROJECT_DIR/code
-# fi
-# if [ ! -z ${CIRCLE_WORKING_DIRECTORY} ]; then # we are running from a gitlab runner
-#     export CODE_DIR=$CIRCLE_WORKING_DIRECTORY/code
-# fi
+if [ ! -z ${GITHUB_ACTION} ]; then # we are running from a github runner
+    export CODE_DIR=$GITHUB_WORKSPACE
+fi
+if [ ! -z ${CI_BUILDS_DIR} ]; then # we are running from a gitlab runner
+    export CODE_DIR=$CI_PROJECT_DIR
+fi
+if [ ! -z ${CIRCLE_WORKING_DIRECTORY} ]; then # we are running from a gitlab runner
+    export CODE_DIR=$CIRCLE_WORKING_DIRECTORY
+fi
 
 echo "Default region: $REGION"
 echo "AWS CLI       : $AWS_CLI"
