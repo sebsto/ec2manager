@@ -2,24 +2,15 @@
 set -e 
 set -o pipefail
 
-HOME=/Users/ec2-user
-CODE_DIR=$HOME/EC2Manager
+. code/ci_actions/00_common.sh
+
 echo "Changing to code directory at $CODE_DIR"
 pushd $CODE_DIR
 
 BUILD_PATH="./build-release"
-ARCHIVE_PATH="$BUILD_PATH/EC2Manager.xcarchive"
+ARCHIVE_PATH="$BUILD_PATH/ec2manager.xcarchive"
 EXPORT_OPTIONS_FILE="./exportOptions.plist"
-SCHEME="EC2Manager
-
-arch_name="$(uname -m)"
-if [ ${arch_name} = "arm64" ]; then 
-    AWS_CLI=/opt/homebrew/bin/aws
-else
-    AWS_CLI=/usr/local/bin/aws 
-fi
-
-REGION=$(curl -s 169.254.169.254/latest/meta-data/placement/region/)
+SCHEME="ec2manager"
 
 KEYCHAIN_PASSWORD=Passw0rd
 KEYCHAIN_NAME=dev.keychain
@@ -62,7 +53,7 @@ echo "Creating an Archive"
 xcodebuild -exportArchive \
            -archivePath "$ARCHIVE_PATH" \
            -exportOptionsPlist "$EXPORT_OPTIONS_FILE" \
-           -exportPath "$BUILD_PATH"  | xcbeautify
+           -exportPath "$BUILD_PATH"  | $BREW_PATH/xcbeautify
 
 echo "Verify Archive"
 xcrun altool  \

@@ -1,19 +1,10 @@
 #!/bin/sh
 
-arch_name="$(uname -m)"
-if [ ${arch_name} = "arm64" ]; then 
-    AWS_CLI=/opt/homebrew/bin/aws
-else
-    AWS_CLI=/usr/local/bin/aws 
-fi
+. code/ci_actions/00_common.sh
 
-TOKEN=$(curl -s -H "X-aws-ec2-metadata-token-ttl-seconds: 21600" -X PUT 'http://169.254.169.254/latest/api/token')
-REGION=$(curl -s -H "X-aws-ec2-metadata-token: ${TOKEN}" 'http://169.254.169.254/latest/meta-data/placement/region')
-echo "${REGION}" 
-
-HOME=/Users/ec2-user
-CERTIFICATES_DIR="${HOME}/certificates";
-mkdir -p "${CERTIFICATES_DIR}" 2>&1 >/dev/null
+CERTIFICATES_DIR=$HOME/certificates
+mkdir -p $CERTIFICATES_DIR 2>&1 >/dev/null
+echo "Certificates directory: $CERTIFICATES_DIR"
 
 echo "Cleaning Provisioning Profiles"
 rm -rf "$HOME/Library/MobileDevice/Provisioning Profiles"
@@ -27,7 +18,7 @@ AUTHORISATION=(-T /usr/bin/security -T /usr/bin/codesign -T /usr/bin/xcodebuild)
 echo "Re-Creating System Keychain"
 sudo security delete-keychain "${SYSTEM_KEYCHAIN}" 
 sudo security create-keychain -p "${KEYCHAIN_PASSWORD}" "${SYSTEM_KEYCHAIN}"
-sudo security list-keychains -s "${SYSTEM_KEYCHAIN}"
+security list-keychains -s "${SYSTEM_KEYCHAIN}"
 
 if [ -f $HOME/Library/Keychains/"${KEYCHAIN_NAME}"-db ]; then
     echo "Deleting old ${KEYCHAIN_NAME} keychain"
@@ -60,20 +51,14 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Retrieve application dev and dist keys from AWS Secret Manager"
-SIGNING_DEV_KEY_SECRET=apple-signing-dev-certificate
 SIGNING_DIST_KEY_SECRET=apple-signing-dist-certificate
 MOBILE_PROVISIONING_PROFILE_DIST_SECRET=ec2manager-dist-provisionning
 
 # These are base64 values, we will need to decode to a file when needed
-SIGNING_DEV_KEY=$($AWS_CLI --region $REGION secretsmanager get-secret-value --secret-id $SIGNING_DEV_KEY_SECRET --query SecretBinary --output text)
 SIGNING_DIST_KEY=$($AWS_CLI --region $REGION secretsmanager get-secret-value --secret-id $SIGNING_DIST_KEY_SECRET --query SecretBinary --output text)
 MOBILE_PROVISIONING_DIST_PROFILE=$($AWS_CLI --region $REGION secretsmanager get-secret-value --secret-id $MOBILE_PROVISIONING_PROFILE_DIST_SECRET --query SecretBinary --output text)
 
 echo "Import Signing private key and certificate"
-DEV_KEY_FILE=$CERTIFICATES_DIR/apple_dev_key.p12
-echo $SIGNING_DEV_KEY | base64 -d > $DEV_KEY_FILE
-security import "${DEV_KEY_FILE}" -P "" -k "${KEYCHAIN_NAME}" "${AUTHORISATION[@]}"
-
 DIST_KEY_FILE=$CERTIFICATES_DIR/apple_dist_key.p12
 echo $SIGNING_DIST_KEY | base64 -d > $DIST_KEY_FILE
 security import "${DIST_KEY_FILE}" -P "" -k "${KEYCHAIN_NAME}" "${AUTHORISATION[@]}"

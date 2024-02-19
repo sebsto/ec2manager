@@ -2,31 +2,19 @@
 set -e 
 set -o pipefail
 
-arch_name="$(uname -m)"
-if [ ${arch_name} = "arm64" ]; then 
-    AWS_CLI=/opt/homebrew/bin/aws
-else
-    AWS_CLI=/usr/local/bin/aws 
-fi
+. code/ci_actions/00_common.sh
 
-REGION=$(curl -s 169.254.169.254/latest/meta-data/placement/region/)
-HOME=/Users/ec2-user
+echo "Changing to code directory at $CODE_DIR"
+pushd $CODE_DIR
 
-KEYCHAIN_PASSWORD=Passw0rd
-KEYCHAIN_NAME=dev.keychain
-security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_NAME
-
-pushd $HOME/amplify-ios-getting-started/code
-
-WORKSPACE="EC2Manager.xcworkspace"
-SCHEME="EC2Manager"
-CONFIGURATION="Release"
-PHONE_MODEL="iPhone 14 Pro"
-IOS_VERSION="16.2"
+PROJECT="EC2Manager.xcodeproj"
+SCHEME="getting started"
+PHONE_MODEL="iPhone 15 Pro"
+IOS_VERSION="17.2"
 
 xcodebuild test \
-    -workspace "$WORKSPACE" \
+    -project "$PROJECT" \
     -scheme "$SCHEME"       \
-    -destination platform="iOS Simulator",name="${PHONE_MODEL}",OS=${IOS_VERSION}  | xcbeautify
+    -destination platform="iOS Simulator",name="${PHONE_MODEL}",OS=${IOS_VERSION}  | $BREW_PATH/xcbeautify
 
 popd
