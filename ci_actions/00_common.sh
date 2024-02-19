@@ -9,7 +9,8 @@ else
     export AWS_CLI=$BREW_PATH/aws
 fi
 
-export REGION=$(curl -s 169.254.169.254/latest/meta-data/placement/region/)
+TOKEN=$(curl -s -H "X-aws-ec2-metadata-token-ttl-seconds: 21600" -X PUT 'http://169.254.169.254/latest/api/token')
+export REGION=$(curl -s -H "X-aws-ec2-metadata-token: ${TOKEN}" 'http://169.254.169.254/latest/meta-data/placement/region')
 export LANG=en_US.UTF-8
 
 export HOME=/Users/ec2-user
