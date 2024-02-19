@@ -19,9 +19,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: PrepareKeychain
-      run: code/ci_actions/01_keychain.sh
+      run: ci_actions/01_keychain.sh
     - name: PrepareAmplify
-      run: code/ci_actions/02_amplify.sh
+      run: ci_actions/02_amplify.sh
 
   build:
 
@@ -31,7 +31,7 @@ jobs:
 
     steps:
     - name: Build
-      run: code/ci_actions/03_build.sh
+      run: ci_actions/03_build.sh
 
   test:
 
@@ -42,9 +42,9 @@ jobs:
     steps:
 
     - name: LocalTest
-      run: code/ci_actions/04_local_tests.sh
+      run: ci_actions/04_local_tests.sh
     - name: DeviceFarmTest
-      run: code/ci_actions/05_devicefarm_tests.sh
+      run: ci_actions/05_devicefarm_tests.sh
 
   cleanup:
 
@@ -55,4 +55,4 @@ jobs:
     steps:
 
     - name: cleanup
-      run: code/ci_actions/07_cleanup.sh
+      run: ci_actions/07_cleanup.sh
