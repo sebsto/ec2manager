@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00253A002B6E356E00750FB1 /* Bedrock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002539FF2B6E356E00750FB1 /* Bedrock.swift */; };
+		0044348A2B3867FA00C396A9 /* EC2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004434892B3867FA00C396A9 /* EC2View.swift */; };
+		0044348C2B38698D00C396A9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0044348B2B38698D00C396A9 /* ViewModel.swift */; };
+		005714022B7BC9B600380310 /* AWSBedrockRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 005714012B7BC9B600380310 /* AWSBedrockRuntime */; };
+		0057140F2B7BCB5500380310 /* AWSEC2 in Frameworks */ = {isa = PBXBuildFile; productRef = 0057140E2B7BCB5500380310 /* AWSEC2 */; };
+		007469DA2B3B2054007A7DEB /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 007469D92B3B2054007A7DEB /* Logging */; };
+		007469E42B3B209E007A7DEB /* Authenticator in Frameworks */ = {isa = PBXBuildFile; productRef = 007469E32B3B209E007A7DEB /* Authenticator */; };
+		007469E92B3B2604007A7DEB /* aws.png in Resources */ = {isa = PBXBuildFile; fileRef = 007469E62B3B2603007A7DEB /* aws.png */; };
+		007469EA2B3B2604007A7DEB /* ubuntu.png in Resources */ = {isa = PBXBuildFile; fileRef = 007469E72B3B2603007A7DEB /* ubuntu.png */; };
+		007469EB2B3B2604007A7DEB /* windows.png in Resources */ = {isa = PBXBuildFile; fileRef = 007469E82B3B2604007A7DEB /* windows.png */; };
+		007469ED2B3B270D007A7DEB /* linux.png in Resources */ = {isa = PBXBuildFile; fileRef = 007469EC2B3B270D007A7DEB /* linux.png */; };
+		008C55462B365C5600317701 /* EC2ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C55452B365C5600317701 /* EC2ManagerApp.swift */; };
+		008C55482B365C5600317701 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C55472B365C5600317701 /* ContentView.swift */; };
+		008C554A2B365C5700317701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 008C55492B365C5700317701 /* Assets.xcassets */; };
+		008C554D2B365C5700317701 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 008C554C2B365C5700317701 /* Preview Assets.xcassets */; };
+		008C557A2B3661A300317701 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C55792B3661A300317701 /* Backend.swift */; };
+		00B7686B2B5E6C4E00FBA087 /* macos.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B7686A2B5E6C4E00FBA087 /* macos.png */; };
+		00D4F2832B70CDCA003B8E8B /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 00D4F2822B70CDCA003B8E8B /* AWSPluginsCore */; };
+		00D4F2892B70CDCA003B8E8B /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 00D4F2882B70CDCA003B8E8B /* Amplify */; };
+		00D4F2AE2B70D2C1003B8E8B /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 00D4F2AD2B70D2C1003B8E8B /* AWSCognitoAuthPlugin */; };
+		4657BC8027104CB13C5149BD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D8D7C1595A9DE591E5211E2A /* awsconfiguration.json */; };
+		EBD76C3B5DE7353249B1C0AA /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A1176872B88582B66ED764FB /* amplifyconfiguration.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		002236DD2B83F8DB00DC6DD3 /* 02_prepare_project.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 02_prepare_project.sh; sourceTree = "<group>"; };
+		002236DE2B83F8DB00DC6DD3 /* 01_keychain_cli.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 01_keychain_cli.sh; sourceTree = "<group>"; };
+		002236DF2B83F8DB00DC6DD3 /* 04_local_tests.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 04_local_tests.sh; sourceTree = "<group>"; };
+		002236E22B83F8DB00DC6DD3 /* 06_archive_cli.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 06_archive_cli.sh; sourceTree = "<group>"; };
+		002236E32B83F8DB00DC6DD3 /* 00_AMI_install_dev_dependencies.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 00_AMI_install_dev_dependencies.sh; sourceTree = "<group>"; };
+		002236E42B83F8DB00DC6DD3 /* 00_AMI_install_dev_tools.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 00_AMI_install_dev_tools.sh; sourceTree = "<group>"; };
+		002236E82B83F8DB00DC6DD3 /* 03_build_cli.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 03_build_cli.sh; sourceTree = "<group>"; };
+		002236EA2B83F8DB00DC6DD3 /* import_secrets.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = import_secrets.sh; sourceTree = "<group>"; };
+		002539FF2B6E356E00750FB1 /* Bedrock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bedrock.swift; sourceTree = "<group>"; };
+		004434892B3867FA00C396A9 /* EC2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EC2View.swift; sourceTree = "<group>"; };
+		0044348B2B38698D00C396A9 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		007469E62B3B2603007A7DEB /* aws.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aws.png; sourceTree = "<group>"; };
+		007469E72B3B2603007A7DEB /* ubuntu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ubuntu.png; sourceTree = "<group>"; };
+		007469E82B3B2604007A7DEB /* windows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = windows.png; sourceTree = "<group>"; };
+		007469EC2B3B270D007A7DEB /* linux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linux.png; sourceTree = "<group>"; };
+		008C55422B365C5600317701 /* EC2Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EC2Manager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		008C55452B365C5600317701 /* EC2ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EC2ManagerApp.swift; sourceTree = "<group>"; };
+		008C55472B365C5600317701 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		008C55492B365C5700317701 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		008C554C2B365C5700317701 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		008C55792B3661A300317701 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
+		00B7686A2B5E6C4E00FBA087 /* macos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macos.png; sourceTree = "<group>"; };
+		00F4CDEE2B367334005C35A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A1176872B88582B66ED764FB /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		D8D7C1595A9DE591E5211E2A /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		008C553F2B365C5600317701 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00D4F2892B70CDCA003B8E8B /* Amplify in Frameworks */,
+				00D4F2AE2B70D2C1003B8E8B /* AWSCognitoAuthPlugin in Frameworks */,
+				005714022B7BC9B600380310 /* AWSBedrockRuntime in Frameworks */,
+				00D4F2832B70CDCA003B8E8B /* AWSPluginsCore in Frameworks */,
+				007469E42B3B209E007A7DEB /* Authenticator in Frameworks */,
+				007469DA2B3B2054007A7DEB /* Logging in Frameworks */,
+				0057140F2B7BCB5500380310 /* AWSEC2 in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		002236DB2B83F8DB00DC6DD3 /* cli-build */ = {
+			isa = PBXGroup;
+			children = (
+				002236DE2B83F8DB00DC6DD3 /* 01_keychain_cli.sh */,
+				002236DD2B83F8DB00DC6DD3 /* 02_prepare_project.sh */,
+				002236DF2B83F8DB00DC6DD3 /* 04_local_tests.sh */,
+				002236E22B83F8DB00DC6DD3 /* 06_archive_cli.sh */,
+				002236E32B83F8DB00DC6DD3 /* 00_AMI_install_dev_dependencies.sh */,
+				002236E42B83F8DB00DC6DD3 /* 00_AMI_install_dev_tools.sh */,
+				002236E82B83F8DB00DC6DD3 /* 03_build_cli.sh */,
+				002236EA2B83F8DB00DC6DD3 /* import_secrets.sh */,
+			);
+			path = "cli-build";
+			sourceTree = "<group>";
+		};
+		00558E5F2B36650300977D2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		007469E52B3B25BA007A7DEB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				007469E62B3B2603007A7DEB /* aws.png */,
+				00B7686A2B5E6C4E00FBA087 /* macos.png */,
+				007469EC2B3B270D007A7DEB /* linux.png */,
+				007469E72B3B2603007A7DEB /* ubuntu.png */,
+				007469E82B3B2604007A7DEB /* windows.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		008C55392B365C5600317701 = {
+			isa = PBXGroup;
+			children = (
+				002236DB2B83F8DB00DC6DD3 /* cli-build */,
+				007469E52B3B25BA007A7DEB /* Resources */,
+				008C55442B365C5600317701 /* EC2Manager */,
+				008C55432B365C5600317701 /* Products */,
+				15B1D80EA9BF09B42DF91CB4 /* AmplifyConfig */,
+				00558E5F2B36650300977D2D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		008C55432B365C5600317701 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				008C55422B365C5600317701 /* EC2Manager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		008C55442B365C5600317701 /* EC2Manager */ = {
+			isa = PBXGroup;
+			children = (
+				00F4CDEE2B367334005C35A7 /* Info.plist */,
+				008C55452B365C5600317701 /* EC2ManagerApp.swift */,
+				008C55792B3661A300317701 /* Backend.swift */,
+				002539FF2B6E356E00750FB1 /* Bedrock.swift */,
+				0044348B2B38698D00C396A9 /* ViewModel.swift */,
+				008C55472B365C5600317701 /* ContentView.swift */,
+				004434892B3867FA00C396A9 /* EC2View.swift */,
+				008C55492B365C5700317701 /* Assets.xcassets */,
+				008C554B2B365C5700317701 /* Preview Content */,
+			);
+			path = EC2Manager;
+			sourceTree = "<group>";
+		};
+		008C554B2B365C5700317701 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				008C554C2B365C5700317701 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		15B1D80EA9BF09B42DF91CB4 /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				D8D7C1595A9DE591E5211E2A /* awsconfiguration.json */,
+				A1176872B88582B66ED764FB /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		008C55412B365C5600317701 /* EC2Manager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 008C55502B365C5700317701 /* Build configuration list for PBXNativeTarget "EC2Manager" */;
+			buildPhases = (
+				008C553E2B365C5600317701 /* Sources */,
+				008C553F2B365C5600317701 /* Frameworks */,
+				008C55402B365C5600317701 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EC2Manager;
+			packageProductDependencies = (
+				007469D92B3B2054007A7DEB /* Logging */,
+				007469E32B3B209E007A7DEB /* Authenticator */,
+				00D4F2822B70CDCA003B8E8B /* AWSPluginsCore */,
+				00D4F2882B70CDCA003B8E8B /* Amplify */,
+				00D4F2AD2B70D2C1003B8E8B /* AWSCognitoAuthPlugin */,
+				005714012B7BC9B600380310 /* AWSBedrockRuntime */,
+				0057140E2B7BCB5500380310 /* AWSEC2 */,
+			);
+			productName = EC2Manager;
+			productReference = 008C55422B365C5600317701 /* EC2Manager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		008C553A2B365C5600317701 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					008C55412B365C5600317701 = {
+						CreatedOnToolsVersion = 15.1;
+					};
+				};
+			};
+			buildConfigurationList = 008C553D2B365C5600317701 /* Build configuration list for PBXProject "EC2Manager" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 008C55392B365C5600317701;
+			packageReferences = (
+				007469D82B3B2054007A7DEB /* XCRemoteSwiftPackageReference "swift-log" */,
+				007469E22B3B209E007A7DEB /* XCRemoteSwiftPackageReference "amplify-ui-swift-authenticator" */,
+				005713F62B7BC99B00380310 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
+				005714032B7BC9FD00380310 /* XCRemoteSwiftPackageReference "amplify-swift" */,
+			);
+			productRefGroup = 008C55432B365C5600317701 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				008C55412B365C5600317701 /* EC2Manager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		008C55402B365C5600317701 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00B7686B2B5E6C4E00FBA087 /* macos.png in Resources */,
+				007469E92B3B2604007A7DEB /* aws.png in Resources */,
+				007469ED2B3B270D007A7DEB /* linux.png in Resources */,
+				007469EB2B3B2604007A7DEB /* windows.png in Resources */,
+				008C554D2B365C5700317701 /* Preview Assets.xcassets in Resources */,
+				008C554A2B365C5700317701 /* Assets.xcassets in Resources */,
+				4657BC8027104CB13C5149BD /* awsconfiguration.json in Resources */,
+				EBD76C3B5DE7353249B1C0AA /* amplifyconfiguration.json in Resources */,
+				007469EA2B3B2604007A7DEB /* ubuntu.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		008C553E2B365C5600317701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00253A002B6E356E00750FB1 /* Bedrock.swift in Sources */,
+				0044348C2B38698D00C396A9 /* ViewModel.swift in Sources */,
+				008C55482B365C5600317701 /* ContentView.swift in Sources */,
+				0044348A2B3867FA00C396A9 /* EC2View.swift in Sources */,
+				008C55462B365C5600317701 /* EC2ManagerApp.swift in Sources */,
+				008C557A2B3661A300317701 /* Backend.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		008C554E2B365C5700317701 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		008C554F2B365C5700317701 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		008C55512B365C5700317701 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EC2Manager/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EC2Manager/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "EC2 Manager";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = " /Users/stormacq/Documents/amazon/code/swift/mac/BedrockMiniSDK/.build/arm64-apple-macosx/debug/";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stormacq.app.demo.EC2Manager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		008C55522B365C5700317701 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EC2Manager/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EC2Manager/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "EC2 Manager";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "/Users/stormacq/Documents/amazon/code/swift/mac/BedrockMiniSDK/.build/arm64-apple-macosx/release/";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stormacq.app.demo.EC2Manager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		008C553D2B365C5600317701 /* Build configuration list for PBXProject "EC2Manager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				008C554E2B365C5700317701 /* Debug */,
+				008C554F2B365C5700317701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		008C55502B365C5700317701 /* Build configuration list for PBXNativeTarget "EC2Manager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				008C55512B365C5700317701 /* Debug */,
+				008C55522B365C5700317701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		005713F62B7BC99B00380310 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 0.31.0;
+			};
+		};
+		005714032B7BC9FD00380310 /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.26.1;
+			};
+		};
+		007469D82B3B2054007A7DEB /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.3;
+			};
+		};
+		007469E22B3B209E007A7DEB /* XCRemoteSwiftPackageReference "amplify-ui-swift-authenticator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ui-swift-authenticator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		005714012B7BC9B600380310 /* AWSBedrockRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 005713F62B7BC99B00380310 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSBedrockRuntime;
+		};
+		0057140E2B7BCB5500380310 /* AWSEC2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 005713F62B7BC99B00380310 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSEC2;
+		};
+		007469D92B3B2054007A7DEB /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 007469D82B3B2054007A7DEB /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		007469E32B3B209E007A7DEB /* Authenticator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 007469E22B3B209E007A7DEB /* XCRemoteSwiftPackageReference "amplify-ui-swift-authenticator" */;
+			productName = Authenticator;
+		};
+		00D4F2822B70CDCA003B8E8B /* AWSPluginsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AWSPluginsCore;
+		};
+		00D4F2882B70CDCA003B8E8B /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Amplify;
+		};
+		00D4F2AD2B70D2C1003B8E8B /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AWSCognitoAuthPlugin;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 008C553A2B365C5600317701 /* Project object */;
+}

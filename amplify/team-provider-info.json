@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ec2manager-dev-191541-authRole",
+      "UnauthRoleArn": "arn:aws:iam::486652066693:role/amplify-ec2manager-dev-191541-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::486652066693:role/amplify-ec2manager-dev-191541-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-ec2manager-dev-191541-deployment",
+      "UnauthRoleName": "amplify-ec2manager-dev-191541-unauthRole",
+      "StackName": "amplify-ec2manager-dev-191541",
+      "StackId": "arn:aws:cloudformation:eu-central-1:486652066693:stack/amplify-ec2manager-dev-191541/6db5aa50-a128-11ee-8df1-02a1e39add5f",
+      "AmplifyAppId": "d3jfw5zir9hfi"
+    },
+    "categories": {
+      "auth": {
+        "ec2manager71c5f236": {}
+      }
+    }
+  }
+}
