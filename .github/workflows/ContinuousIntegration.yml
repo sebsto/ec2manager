@@ -1,0 +1,58 @@
+name: CICD on GitHub
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  
+  workflow_dispatch: # allows manual trigger of the workflow in GitHub console
+
+jobs:
+  pre-build:
+
+    runs-on: self-hosted
+
+    steps:
+    # - name: Clean Git Config
+    #   run: rm /Users/ec2-user/.gitconfig
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: PrepareKeychain
+      run: code/ci_actions/01_keychain.sh
+    - name: PrepareAmplify
+      run: code/ci_actions/02_amplify.sh
+
+  build:
+
+    needs: pre-build
+
+    runs-on: self-hosted
+
+    steps:
+    - name: Build
+      run: code/ci_actions/03_build.sh
+
+  test:
+
+    needs: build
+    
+    runs-on: self-hosted
+
+    steps:
+
+    - name: LocalTest
+      run: code/ci_actions/04_local_tests.sh
+    - name: DeviceFarmTest
+      run: code/ci_actions/05_devicefarm_tests.sh
+
+  cleanup:
+
+    needs: test
+    
+    runs-on: self-hosted
+
+    steps:
+
+    - name: cleanup
+      run: code/ci_actions/07_cleanup.sh
