@@ -11,16 +11,16 @@ fi
 REGION=$(curl -s 169.254.169.254/latest/meta-data/placement/region/)
 HOME=/Users/ec2-user
 
-pushd $HOME/amplify-ios-getting-started/code
+pushd $HOME/EC2Manager
 
 KEYCHAIN_PASSWORD=Passw0rd
 KEYCHAIN_NAME=dev.keychain
 
-WORKSPACE="getting started.xcworkspace"
-SCHEME="getting started"
+WORKSPACE="EC2Manager.xcworkspace"
+SCHEME="EC2Manager"
 CONFIGURATION="Release"
 BUILD_PATH="./build-release"
-ARCHIVE_PATH="$BUILD_PATH/getting-started.xcarchive"
+ARCHIVE_PATH="$BUILD_PATH/EC2Manager.xcarchive"
 
 security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_NAME
 

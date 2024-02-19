@@ -3,14 +3,14 @@ set -e
 set -o pipefail
 
 HOME=/Users/ec2-user
-CODE_DIR=$HOME/amplify-ios-getting-started/code
+CODE_DIR=$HOME/EC2Manager
 echo "Changing to code directory at $CODE_DIR"
 pushd $CODE_DIR
 
 BUILD_PATH="./build-release"
-ARCHIVE_PATH="$BUILD_PATH/getting-started.xcarchive"
+ARCHIVE_PATH="$BUILD_PATH/EC2Manager.xcarchive"
 EXPORT_OPTIONS_FILE="./exportOptions.plist"
-SCHEME="getting started"
+SCHEME="EC2Manager
 
 arch_name="$(uname -m)"
 if [ ${arch_name} = "arm64" ]; then 
@@ -41,8 +41,8 @@ cat << EOF > $EXPORT_OPTIONS_FILE
 	<string>app-store</string>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>com.amazonaws.amplify.mobile.getting-started</key>
-		<string>amplify-ios-getting-started-dist</string>
+		<key>com.stormacq.app.demo.EC2Manager</key>
+		<string>EC2Manager-dist</string>
 	</dict>
 	<key>signingCertificate</key>
 	<string>Apple Distribution</string>

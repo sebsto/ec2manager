@@ -18,8 +18,9 @@ security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_NAME
 
 pushd $HOME/amplify-ios-getting-started/code
 
-WORKSPACE="getting started.xcworkspace"
-SCHEME="getting started"
+WORKSPACE="EC2Manager.xcworkspace"
+SCHEME="EC2Manager"
+CONFIGURATION="Release"
 PHONE_MODEL="iPhone 14 Pro"
 IOS_VERSION="16.2"
 
