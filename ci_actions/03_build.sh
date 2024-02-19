@@ -11,7 +11,7 @@ KEYCHAIN_PASSWORD=Passw0rd
 KEYCHAIN_NAME=dev.keychain
 
 PROJECT="EC2Manager.xcodeproj"
-SCHEME="ec2manager"
+SCHEME="EC2Manager"
 CONFIGURATION="Release"
 BUILD_PATH="./build-release"
 ARCHIVE_PATH="$BUILD_PATH/EC2Manager.xcarchive"
