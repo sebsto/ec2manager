@@ -53,20 +53,22 @@ PROVIDERS="{\
 BACKEND_REGION=eu-central-1 
 
 # double command execution, this is a workaround for issue https://github.com/aws-amplify/amplify-cli/issues/13201
+export AWS_REGION=$BACKEND_REGION
+
 $AMPLIFY_CLI pull \
 --amplify $AMPLIFY \
 --frontend $FRONTEND \
 --providers $PROVIDERS \
---yes \
---region $BACKEND_REGION || \
+--yes || \
 echo "First amplify pull failed, applying workaround for Amplify CLI Issue # 13201" && \
 mkdir -p $CODE_DIR/amplify/generated/models && \
 $AMPLIFY_CLI pull \
 --amplify $AMPLIFY \
 --frontend $FRONTEND \
 --providers $PROVIDERS \
---yes \
---region $BACKEND_REGION
+--yes
+
+export AWS_REGION=
 
 echo "Generate code for application models"
 $AMPLIFY_CLI codegen models 
