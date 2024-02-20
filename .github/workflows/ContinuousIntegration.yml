@@ -43,12 +43,21 @@ jobs:
 
     - name: LocalTest
       run: ci_actions/04_local_tests.sh
-    - name: DeviceFarmTest
-      run: ci_actions/05_devicefarm_tests.sh
+
+  deploy:
+
+    needs: test
+    
+    runs-on: self-hosted
+
+    steps:
+
+    - name: Deploy to TestFlight
+      run: ci_actions/06_deploy_testflight.sh
 
   cleanup:
 
-    needs: test
+    needs: deploy
     
     runs-on: self-hosted
 
