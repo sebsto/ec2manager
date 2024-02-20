@@ -19,10 +19,11 @@ plutil -replace CFBundleVersion -string $BUILD_NUMBER "./EC2Manager/Info.plist"
 security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_NAME
 
 xcodebuild clean archive                    \
-           -project "$PROJECT"          \
+           -project "$PROJECT"              \
            -scheme "$SCHEME"                \
            -archivePath "$ARCHIVE_PATH"     \
            -derivedDataPath "${BUILD_PATH}" \
-           -configuration "$CONFIGURATION"   | $BREW_PATH/xcbeautify
+           -configuration "$CONFIGURATION"  \
+           -destination platform="iOS Simulator",name="${PHONE_MODEL}",OS=${IOS_VERSION} | $BREW_PATH/xcbeautify
 
 popd

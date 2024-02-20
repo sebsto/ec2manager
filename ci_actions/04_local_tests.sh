@@ -7,9 +7,6 @@ set -o pipefail
 echo "Changing to code directory at $CODE_DIR"
 pushd $CODE_DIR
 
-PHONE_MODEL="iPhone 15 Pro"
-IOS_VERSION="17.2"
-
 xcodebuild test \
     -project "$PROJECT" \
     -scheme "$SCHEME"       \

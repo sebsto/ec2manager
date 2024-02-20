@@ -31,7 +31,8 @@ PROJECT="EC2Manager.xcodeproj"
 SCHEME="EC2Manager"
 BUILD_PATH="./build-release"
 ARCHIVE_PATH="$BUILD_PATH/EC2Manager.xcarchive"
-
+PHONE_MODEL="iPhone 15 Pro"
+IOS_VERSION="17.2"
 
 echo "Default region: $REGION"
 echo "AWS CLI       : $AWS_CLI"
