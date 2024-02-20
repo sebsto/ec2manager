@@ -212,13 +212,13 @@
 			isa = PBXGroup;
 			children = (
 				009DF6232B847F4800A86F42 /* 00_common.sh */,
-				009DF6242B847F4800A86F42 /* 04_local_tests.sh */,
 				009DF6252B847F4800A86F42 /* 01_keychain.sh */,
 				009DF6262B847F4800A86F42 /* 02_amplify.sh */,
+				009DF62A2B847F4800A86F42 /* 03_build.sh */,
+				009DF6242B847F4800A86F42 /* 04_local_tests.sh */,
 				009DF6272B847F4800A86F42 /* 06_deploy_testflight.sh */,
 				009DF6282B847F4800A86F42 /* 07_cleanup.sh */,
 				009DF6292B847F4800A86F42 /* import_secrets.sh */,
-				009DF62A2B847F4800A86F42 /* 03_build.sh */,
 			);
 			path = ci_actions;
 			sourceTree = "<group>";
@@ -568,7 +568,7 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 56U756R2L2;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EC2Manager/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "EC2 Manager";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
@@ -610,7 +610,7 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 56U756R2L2;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EC2Manager/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "EC2 Manager";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
