@@ -12,8 +12,6 @@ ARCHIVE_PATH="$BUILD_PATH/EC2Manager.xcarchive"
 SCHEME="EC2Manager"
 EXPORT_OPTIONS_FILE="./exportOptions.plist"
 
-KEYCHAIN_PASSWORD=Passw0rd
-KEYCHAIN_NAME=dev.keychain
 security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_NAME
 
 APPLE_ID_SECRET=apple-id

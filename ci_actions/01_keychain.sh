@@ -11,8 +11,6 @@ rm -rf "$HOME/Library/MobileDevice/Provisioning Profiles"
 mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
 
 echo "Prepare keychain"
-KEYCHAIN_PASSWORD=Passw0rd
-KEYCHAIN_NAME=dev.keychain
 SYSTEM_KEYCHAIN=/Library/Keychains/System.keychain
 AUTHORISATION=(-T /usr/bin/security -T /usr/bin/codesign -T /usr/bin/xcodebuild)
 

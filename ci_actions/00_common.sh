@@ -25,6 +25,9 @@ if [ ! -z ${CIRCLE_WORKING_DIRECTORY} ]; then # we are running from a gitlab run
     export CODE_DIR=$CIRCLE_WORKING_DIRECTORY
 fi
 
+KEYCHAIN_PASSWORD=Passw0rd
+KEYCHAIN_NAME=dev.keychain
+
 echo "Default region: $REGION"
 echo "AWS CLI       : $AWS_CLI"
 echo "Code directory: $CODE_DIR"

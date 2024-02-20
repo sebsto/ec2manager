@@ -7,9 +7,6 @@ set -o pipefail
 echo "Changing to code directory at $CODE_DIR"
 pushd $CODE_DIR
 
-KEYCHAIN_PASSWORD=Passw0rd
-KEYCHAIN_NAME=dev.keychain
-
 PROJECT="EC2Manager.xcodeproj"
 SCHEME="EC2Manager"
 CONFIGURATION="Release"
