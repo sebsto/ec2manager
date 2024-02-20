@@ -142,14 +142,15 @@ final class ViewModel: ObservableObject {
     }
     
     func instanceDescription(_ ec2: EC2Instance) async -> String {
-        return (try? await backend?.describeInstance(ec2: ec2)) ?? "no description"
+        return "not implemented yet"
+//        return (try? await backend?.describeInstance(ec2: ec2)) ?? "no description"
 //        return (try? await backend?.describeInstanceWithKnowledgeBase(ec2: ec2)) ?? "no description"
     }
     
     // preview
-    var isPreview: Bool {
-        return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
-    }
+//    var isPreview: Bool {
+//        return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+//    }
 }
 
 extension EC2Instance {
