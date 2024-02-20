@@ -70,7 +70,4 @@ $AMPLIFY_CLI pull \
 
 export AWS_REGION=
 
-echo "Generate code for application models"
-$AMPLIFY_CLI codegen models 
-
 popd
