@@ -8,9 +8,9 @@ echo "Changing to code directory at $CODE_DIR"
 pushd $CODE_DIR
 
 BUILD_PATH="./build-release"
-ARCHIVE_PATH="$BUILD_PATH/ec2manager.xcarchive"
+ARCHIVE_PATH="$BUILD_PATH/EC2Manager.xcarchive"
+SCHEME="EC2Manager"
 EXPORT_OPTIONS_FILE="./exportOptions.plist"
-SCHEME="ec2manager"
 
 KEYCHAIN_PASSWORD=Passw0rd
 KEYCHAIN_NAME=dev.keychain
