@@ -67,3 +67,4 @@ xcrun altool  \
 		-p @env:APPLE_SECRET 
 
 popd
+export APPLE_SECRET=
