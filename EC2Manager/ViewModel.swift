@@ -142,8 +142,8 @@ final class ViewModel: ObservableObject {
     }
     
     func instanceDescription(_ ec2: EC2Instance) async -> String {
-//        return "not implemented yet"
-        return (try? await backend?.describeInstance(ec2: ec2)) ?? "no description"
+        return "not implemented yet"
+//        return (try? await backend?.describeInstance(ec2: ec2)) ?? "no description"
 //        return (try? await backend?.describeInstanceWithKnowledgeBase(ec2: ec2)) ?? "no description"
     }
 }
