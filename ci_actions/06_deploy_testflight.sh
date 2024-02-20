@@ -7,9 +7,6 @@ set -o pipefail
 echo "Changing to code directory at $CODE_DIR"
 pushd $CODE_DIR
 
-BUILD_PATH="./build-release"
-ARCHIVE_PATH="$BUILD_PATH/EC2Manager.xcarchive"
-SCHEME="EC2Manager"
 EXPORT_OPTIONS_FILE="./exportOptions.plist"
 
 security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_NAME

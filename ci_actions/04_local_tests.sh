@@ -7,8 +7,6 @@ set -o pipefail
 echo "Changing to code directory at $CODE_DIR"
 pushd $CODE_DIR
 
-PROJECT="EC2Manager.xcodeproj"
-SCHEME="EC2Manager"
 PHONE_MODEL="iPhone 15 Pro"
 IOS_VERSION="17.2"
 

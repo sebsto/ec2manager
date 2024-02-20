@@ -27,6 +27,11 @@ fi
 
 KEYCHAIN_PASSWORD=Passw0rd
 KEYCHAIN_NAME=dev.keychain
+PROJECT="EC2Manager.xcodeproj"
+SCHEME="EC2Manager"
+BUILD_PATH="./build-release"
+ARCHIVE_PATH="$BUILD_PATH/EC2Manager.xcarchive"
+
 
 echo "Default region: $REGION"
 echo "AWS CLI       : $AWS_CLI"
