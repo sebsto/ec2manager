@@ -31,8 +31,16 @@ xcodebuild clean archive                    \
            -destination platform="iOS Simulator",name="${PHONE_MODEL}",OS=${IOS_VERSION} | $BREW_PATH/xcbeautify
 
 # Update build number in the archive. Each build must have a unique number before uploading to AppStore connect
+# the alternative is to disable GENERATE_INFO_PLIST in xcode project
 BUILD_NUMBER=`date +%Y%m%d%H%M%S`
-echo "Updated build number is " $BUILD_NUMBER
-plutil -replace ApplicationProperties.CFBundleVersion -string $BUILD_NUMBER "build-release/EC2Manager.xcarchive/Info.plist"
+PLIST_FILE=build-release/EC2Manager.xcarchive/Info.plist
+echo "Updated build number is" $BUILD_NUMBER
+plutil -replace ApplicationProperties.CFBundleVersion -string $BUILD_NUMBER $PLIST_FILE
+
+# Other values that must be in the PLIST -> Should be handle in the project source, not here
+#plutil -insert ApplicationProperties.ITSAppUsesNonExemptEncryption -bool NO $PLIST_FILE
+#plutil -insert ApplicationProperties.UIApplicationSceneManifest -xml '<dict/>' $PLIST_FILE
+#plutil -replace ApplicationProperties.UIApplicationSceneManifest.UIApplicationSupportsMultipleScenes -bool NO $PLIST_FILE
+#plutil -insert ApplicationProperties.UIApplicationSceneManifest.UISceneConfigurations -xml '<dict/>' $PLIST_FILE
 
 popd
