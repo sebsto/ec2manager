@@ -12,9 +12,12 @@ CONFIGURATION="Release"
 # Increase Build Number
 # https://rderik.com/blog/automating-build-and-testflight-upload-for-simple-ios-apps/
 
-BUILD_NUMBER=`date +%Y%m%d%H%M%S`
-echo "Updated build number is " $BUILD_NUMBER
-plutil -replace CFBundleVersion -string $BUILD_NUMBER "./EC2Manager/Info.plist"
+#BUILD_NUMBER=`date +%Y%m%d%H%M%S`
+#echo "Updated build number is " $BUILD_NUMBER
+#plutil -replace CFBundleVersion -string $BUILD_NUMBER "./EC2Manager/Info.plist"
+
+# https://developer.apple.com/library/archive/qa/qa1827/_index.html
+agvtool next-version -all
 
 security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_NAME
 
