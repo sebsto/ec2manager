@@ -23,6 +23,17 @@
 		008C554A2B365C5700317701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 008C55492B365C5700317701 /* Assets.xcassets */; };
 		008C554D2B365C5700317701 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 008C554C2B365C5700317701 /* Preview Assets.xcassets */; };
 		008C557A2B3661A300317701 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C55792B3661A300317701 /* Backend.swift */; };
+		009DF60D2B847E3500A86F42 /* EC2ManagerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009DF60C2B847E3500A86F42 /* EC2ManagerUnitTests.swift */; };
+		009DF61A2B847E9B00A86F42 /* EC2ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009DF6192B847E9B00A86F42 /* EC2ManagerUITests.swift */; };
+		009DF61C2B847E9B00A86F42 /* EC2ManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009DF61B2B847E9B00A86F42 /* EC2ManagerUITestsLaunchTests.swift */; };
+		009DF62B2B847F4800A86F42 /* 00_common.sh in Resources */ = {isa = PBXBuildFile; fileRef = 009DF6232B847F4800A86F42 /* 00_common.sh */; };
+		009DF62C2B847F4800A86F42 /* 04_local_tests.sh in Resources */ = {isa = PBXBuildFile; fileRef = 009DF6242B847F4800A86F42 /* 04_local_tests.sh */; };
+		009DF62D2B847F4800A86F42 /* 01_keychain.sh in Resources */ = {isa = PBXBuildFile; fileRef = 009DF6252B847F4800A86F42 /* 01_keychain.sh */; };
+		009DF62E2B847F4800A86F42 /* 02_amplify.sh in Resources */ = {isa = PBXBuildFile; fileRef = 009DF6262B847F4800A86F42 /* 02_amplify.sh */; };
+		009DF62F2B847F4800A86F42 /* 06_deploy_testflight.sh in Resources */ = {isa = PBXBuildFile; fileRef = 009DF6272B847F4800A86F42 /* 06_deploy_testflight.sh */; };
+		009DF6302B847F4800A86F42 /* 07_cleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 009DF6282B847F4800A86F42 /* 07_cleanup.sh */; };
+		009DF6312B847F4800A86F42 /* import_secrets.sh in Resources */ = {isa = PBXBuildFile; fileRef = 009DF6292B847F4800A86F42 /* import_secrets.sh */; };
+		009DF6322B847F4800A86F42 /* 03_build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 009DF62A2B847F4800A86F42 /* 03_build.sh */; };
 		00B7686B2B5E6C4E00FBA087 /* macos.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B7686A2B5E6C4E00FBA087 /* macos.png */; };
 		00D4F2832B70CDCA003B8E8B /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 00D4F2822B70CDCA003B8E8B /* AWSPluginsCore */; };
 		00D4F2892B70CDCA003B8E8B /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 00D4F2882B70CDCA003B8E8B /* Amplify */; };
@@ -31,15 +42,24 @@
 		EBD76C3B5DE7353249B1C0AA /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A1176872B88582B66ED764FB /* amplifyconfiguration.json */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		009DF60E2B847E3500A86F42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 008C553A2B365C5600317701 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 008C55412B365C5600317701;
+			remoteInfo = EC2Manager;
+		};
+		009DF61D2B847E9B00A86F42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 008C553A2B365C5600317701 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 008C55412B365C5600317701;
+			remoteInfo = EC2Manager;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		002236DD2B83F8DB00DC6DD3 /* 02_prepare_project.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 02_prepare_project.sh; sourceTree = "<group>"; };
-		002236DE2B83F8DB00DC6DD3 /* 01_keychain_cli.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 01_keychain_cli.sh; sourceTree = "<group>"; };
-		002236DF2B83F8DB00DC6DD3 /* 04_local_tests.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 04_local_tests.sh; sourceTree = "<group>"; };
-		002236E22B83F8DB00DC6DD3 /* 06_archive_cli.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 06_archive_cli.sh; sourceTree = "<group>"; };
-		002236E32B83F8DB00DC6DD3 /* 00_AMI_install_dev_dependencies.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 00_AMI_install_dev_dependencies.sh; sourceTree = "<group>"; };
-		002236E42B83F8DB00DC6DD3 /* 00_AMI_install_dev_tools.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 00_AMI_install_dev_tools.sh; sourceTree = "<group>"; };
-		002236E82B83F8DB00DC6DD3 /* 03_build_cli.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 03_build_cli.sh; sourceTree = "<group>"; };
-		002236EA2B83F8DB00DC6DD3 /* import_secrets.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = import_secrets.sh; sourceTree = "<group>"; };
 		002539FF2B6E356E00750FB1 /* Bedrock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bedrock.swift; sourceTree = "<group>"; };
 		004434892B3867FA00C396A9 /* EC2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EC2View.swift; sourceTree = "<group>"; };
 		0044348B2B38698D00C396A9 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -53,6 +73,19 @@
 		008C55492B365C5700317701 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		008C554C2B365C5700317701 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		008C55792B3661A300317701 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
+		009DF60A2B847E3500A86F42 /* EC2ManagerUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EC2ManagerUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		009DF60C2B847E3500A86F42 /* EC2ManagerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EC2ManagerUnitTests.swift; sourceTree = "<group>"; };
+		009DF6172B847E9B00A86F42 /* EC2ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EC2ManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		009DF6192B847E9B00A86F42 /* EC2ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EC2ManagerUITests.swift; sourceTree = "<group>"; };
+		009DF61B2B847E9B00A86F42 /* EC2ManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EC2ManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		009DF6232B847F4800A86F42 /* 00_common.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = 00_common.sh; sourceTree = "<group>"; };
+		009DF6242B847F4800A86F42 /* 04_local_tests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = 04_local_tests.sh; sourceTree = "<group>"; };
+		009DF6252B847F4800A86F42 /* 01_keychain.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = 01_keychain.sh; sourceTree = "<group>"; };
+		009DF6262B847F4800A86F42 /* 02_amplify.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = 02_amplify.sh; sourceTree = "<group>"; };
+		009DF6272B847F4800A86F42 /* 06_deploy_testflight.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = 06_deploy_testflight.sh; sourceTree = "<group>"; };
+		009DF6282B847F4800A86F42 /* 07_cleanup.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = 07_cleanup.sh; sourceTree = "<group>"; };
+		009DF6292B847F4800A86F42 /* import_secrets.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = import_secrets.sh; sourceTree = "<group>"; };
+		009DF62A2B847F4800A86F42 /* 03_build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = 03_build.sh; sourceTree = "<group>"; };
 		00B7686A2B5E6C4E00FBA087 /* macos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macos.png; sourceTree = "<group>"; };
 		00F4CDEE2B367334005C35A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A1176872B88582B66ED764FB /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
@@ -74,24 +107,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		009DF6072B847E3500A86F42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		009DF6142B847E9B00A86F42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		002236DB2B83F8DB00DC6DD3 /* cli-build */ = {
-			isa = PBXGroup;
-			children = (
-				002236DE2B83F8DB00DC6DD3 /* 01_keychain_cli.sh */,
-				002236DD2B83F8DB00DC6DD3 /* 02_prepare_project.sh */,
-				002236DF2B83F8DB00DC6DD3 /* 04_local_tests.sh */,
-				002236E22B83F8DB00DC6DD3 /* 06_archive_cli.sh */,
-				002236E32B83F8DB00DC6DD3 /* 00_AMI_install_dev_dependencies.sh */,
-				002236E42B83F8DB00DC6DD3 /* 00_AMI_install_dev_tools.sh */,
-				002236E82B83F8DB00DC6DD3 /* 03_build_cli.sh */,
-				002236EA2B83F8DB00DC6DD3 /* import_secrets.sh */,
-			);
-			path = "cli-build";
-			sourceTree = "<group>";
-		};
 		00558E5F2B36650300977D2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,9 +146,11 @@
 		008C55392B365C5600317701 = {
 			isa = PBXGroup;
 			children = (
-				002236DB2B83F8DB00DC6DD3 /* cli-build */,
+				009DF6222B847F4800A86F42 /* ci_actions */,
 				007469E52B3B25BA007A7DEB /* Resources */,
 				008C55442B365C5600317701 /* EC2Manager */,
+				009DF60B2B847E3500A86F42 /* EC2ManagerUnitTests */,
+				009DF6182B847E9B00A86F42 /* EC2ManagerUITests */,
 				008C55432B365C5600317701 /* Products */,
 				15B1D80EA9BF09B42DF91CB4 /* AmplifyConfig */,
 				00558E5F2B36650300977D2D /* Frameworks */,
@@ -127,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				008C55422B365C5600317701 /* EC2Manager.app */,
+				009DF60A2B847E3500A86F42 /* EC2ManagerUnitTests.xctest */,
+				009DF6172B847E9B00A86F42 /* EC2ManagerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +189,38 @@
 				008C554C2B365C5700317701 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		009DF60B2B847E3500A86F42 /* EC2ManagerUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				009DF60C2B847E3500A86F42 /* EC2ManagerUnitTests.swift */,
+			);
+			path = EC2ManagerUnitTests;
+			sourceTree = "<group>";
+		};
+		009DF6182B847E9B00A86F42 /* EC2ManagerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				009DF6192B847E9B00A86F42 /* EC2ManagerUITests.swift */,
+				009DF61B2B847E9B00A86F42 /* EC2ManagerUITestsLaunchTests.swift */,
+			);
+			path = EC2ManagerUITests;
+			sourceTree = "<group>";
+		};
+		009DF6222B847F4800A86F42 /* ci_actions */ = {
+			isa = PBXGroup;
+			children = (
+				009DF6232B847F4800A86F42 /* 00_common.sh */,
+				009DF6242B847F4800A86F42 /* 04_local_tests.sh */,
+				009DF6252B847F4800A86F42 /* 01_keychain.sh */,
+				009DF6262B847F4800A86F42 /* 02_amplify.sh */,
+				009DF6272B847F4800A86F42 /* 06_deploy_testflight.sh */,
+				009DF6282B847F4800A86F42 /* 07_cleanup.sh */,
+				009DF6292B847F4800A86F42 /* import_secrets.sh */,
+				009DF62A2B847F4800A86F42 /* 03_build.sh */,
+			);
+			path = ci_actions;
 			sourceTree = "<group>";
 		};
 		15B1D80EA9BF09B42DF91CB4 /* AmplifyConfig */ = {
@@ -193,6 +261,42 @@
 			productReference = 008C55422B365C5600317701 /* EC2Manager.app */;
 			productType = "com.apple.product-type.application";
 		};
+		009DF6092B847E3500A86F42 /* EC2ManagerUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 009DF6122B847E3500A86F42 /* Build configuration list for PBXNativeTarget "EC2ManagerUnitTests" */;
+			buildPhases = (
+				009DF6062B847E3500A86F42 /* Sources */,
+				009DF6072B847E3500A86F42 /* Frameworks */,
+				009DF6082B847E3500A86F42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				009DF60F2B847E3500A86F42 /* PBXTargetDependency */,
+			);
+			name = EC2ManagerUnitTests;
+			productName = EC2ManagerUnitTests;
+			productReference = 009DF60A2B847E3500A86F42 /* EC2ManagerUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		009DF6162B847E9B00A86F42 /* EC2ManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 009DF61F2B847E9B00A86F42 /* Build configuration list for PBXNativeTarget "EC2ManagerUITests" */;
+			buildPhases = (
+				009DF6132B847E9B00A86F42 /* Sources */,
+				009DF6142B847E9B00A86F42 /* Frameworks */,
+				009DF6152B847E9B00A86F42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				009DF61E2B847E9B00A86F42 /* PBXTargetDependency */,
+			);
+			name = EC2ManagerUITests;
+			productName = EC2ManagerUITests;
+			productReference = 009DF6172B847E9B00A86F42 /* EC2ManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -200,11 +304,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					008C55412B365C5600317701 = {
 						CreatedOnToolsVersion = 15.1;
+					};
+					009DF6092B847E3500A86F42 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 008C55412B365C5600317701;
+					};
+					009DF6162B847E9B00A86F42 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 008C55412B365C5600317701;
 					};
 				};
 			};
@@ -228,6 +340,8 @@
 			projectRoot = "";
 			targets = (
 				008C55412B365C5600317701 /* EC2Manager */,
+				009DF6092B847E3500A86F42 /* EC2ManagerUnitTests */,
+				009DF6162B847E9B00A86F42 /* EC2ManagerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,14 +352,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B7686B2B5E6C4E00FBA087 /* macos.png in Resources */,
+				009DF62B2B847F4800A86F42 /* 00_common.sh in Resources */,
+				009DF62C2B847F4800A86F42 /* 04_local_tests.sh in Resources */,
 				007469E92B3B2604007A7DEB /* aws.png in Resources */,
+				009DF6322B847F4800A86F42 /* 03_build.sh in Resources */,
 				007469ED2B3B270D007A7DEB /* linux.png in Resources */,
+				009DF62F2B847F4800A86F42 /* 06_deploy_testflight.sh in Resources */,
 				007469EB2B3B2604007A7DEB /* windows.png in Resources */,
 				008C554D2B365C5700317701 /* Preview Assets.xcassets in Resources */,
+				009DF6302B847F4800A86F42 /* 07_cleanup.sh in Resources */,
+				009DF62D2B847F4800A86F42 /* 01_keychain.sh in Resources */,
 				008C554A2B365C5700317701 /* Assets.xcassets in Resources */,
 				4657BC8027104CB13C5149BD /* awsconfiguration.json in Resources */,
+				009DF62E2B847F4800A86F42 /* 02_amplify.sh in Resources */,
+				009DF6312B847F4800A86F42 /* import_secrets.sh in Resources */,
 				EBD76C3B5DE7353249B1C0AA /* amplifyconfiguration.json in Resources */,
 				007469EA2B3B2604007A7DEB /* ubuntu.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		009DF6082B847E3500A86F42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		009DF6152B847E9B00A86F42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +401,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		009DF6062B847E3500A86F42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				009DF60D2B847E3500A86F42 /* EC2ManagerUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		009DF6132B847E9B00A86F42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				009DF61A2B847E9B00A86F42 /* EC2ManagerUITests.swift in Sources */,
+				009DF61C2B847E9B00A86F42 /* EC2ManagerUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		009DF60F2B847E3500A86F42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 008C55412B365C5600317701 /* EC2Manager */;
+			targetProxy = 009DF60E2B847E3500A86F42 /* PBXContainerItemProxy */;
+		};
+		009DF61E2B847E9B00A86F42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 008C55412B365C5600317701 /* EC2Manager */;
+			targetProxy = 009DF61D2B847E9B00A86F42 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		008C554E2B365C5700317701 /* Debug */ = {
@@ -394,6 +560,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -435,6 +602,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -471,6 +639,80 @@
 			};
 			name = Release;
 		};
+		009DF6102B847E3500A86F42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 56U756R2L2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stormacq.app.demo.EC2ManagerUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EC2Manager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EC2Manager";
+			};
+			name = Debug;
+		};
+		009DF6112B847E3500A86F42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 56U756R2L2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stormacq.app.demo.EC2ManagerUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EC2Manager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EC2Manager";
+			};
+			name = Release;
+		};
+		009DF6202B847E9B00A86F42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 56U756R2L2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stormacq.app.demo.EC2ManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EC2Manager;
+			};
+			name = Debug;
+		};
+		009DF6212B847E9B00A86F42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 56U756R2L2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stormacq.app.demo.EC2ManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EC2Manager;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -488,6 +730,24 @@
 			buildConfigurations = (
 				008C55512B365C5700317701 /* Debug */,
 				008C55522B365C5700317701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		009DF6122B847E3500A86F42 /* Build configuration list for PBXNativeTarget "EC2ManagerUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				009DF6102B847E3500A86F42 /* Debug */,
+				009DF6112B847E3500A86F42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		009DF61F2B847E9B00A86F42 /* Build configuration list for PBXNativeTarget "EC2ManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				009DF6202B847E9B00A86F42 /* Debug */,
+				009DF6212B847E9B00A86F42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
