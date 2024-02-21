@@ -13,7 +13,7 @@ import Amplify
 import AWSPluginsCore
 import AWSCognitoAuthPlugin
 
-import AWSClientRuntime // to access the AWS SDK credentials providers
+import AWSClientRuntime
 import AwsCommonRuntimeKit // to access runtime errors
 import AWSEC2
 import AWSBedrockRuntime
@@ -40,7 +40,6 @@ struct Backend {
     private var logger = Logger(label: "Backend")
     
     private let region = "eu-west-1" // hardcoded on Ireland for now
-//    private let region = "us-east-1" // hardcoded on Ireland for now
 
     // class to ensure Amplify is initialized only once
     public init() throws {
@@ -218,21 +217,61 @@ struct Backend {
             //TODO: should I do something with the response ?
         }
     }
-
+    
     func describeInstance(ec2: EC2Instance) async throws -> String {
         
-        // https://instances.vantage.sh/
-        // https://www.convertcsv.com/csv-to-json.htm
-        
-        let prompt =
-"""
-You are an AWS expert writing a technical textual description for a mobile app. Describe in user friendly terms what is a \(ec2.type) EC2 instance type with key points listed first. Be brief and factual. Just report the top 4 characteristics that have impact on performance. Your response includes first a one line phrase that summarise the strengths, then the four bullet points you choose. Double check the response to ensure it is technically correct.
-"""
         return try await callService {
-            let claudeResponse = try await self.invokeModel(withId: .claude_instant_v1, prompt: prompt)
-            return claudeResponse.completion
+            
+            guard let type = EC2ClientTypes.InstanceType(rawValue: ec2.type) else {
+                return "Unknown instance type: \(ec2.type)"
+            }
+            
+            let request = DescribeInstanceTypesInput(instanceTypes: [type])
+            let response = try await ec2Client().describeInstanceTypes(input: request)
+            guard response.instanceTypes?.count == 1 else {
+                return "Could not retrieve a valid instance type description"
+            }
+            
+            let d = response.instanceTypes![0]
+            let architecture = d.processorInfo?.supportedArchitectures?.map { a in
+                switch a {
+                case .x8664: "x64"
+                case .arm64: "Graviton (Arm)"
+                case .arm64Mac: "Apple silicon"
+                case .x8664Mac: "x86 Mac"
+                default: ""
+                }
+            }.joined(separator: " / ")
+            
+            let gpu = d.gpuInfo?.gpus?.count ?? 0 >= 1 ? "\n- \(d.gpuInfo?.gpus?.count ?? 0) GPU from \(d.gpuInfo?.gpus?[0].manufacturer ?? "") (\(d.gpuInfo?.gpus?[0].name ?? "")) with \(d.gpuInfo?.gpus?[0].memoryInfo?.sizeInMiB ?? 0) MiB memory" : ""
+            
+            return """
+A \(ec2.type) instance is has the following characteristics:
+
+- a \(architecture ?? "") architecture.
+- \(d.vCpuInfo?.defaultVCpus ?? 0) vCPUs (\(d.processorInfo?.sustainedClockSpeedInGhz ?? 0.0) Ghz).
+- \(d.vCpuInfo?.defaultCores ?? 0) \((d.vCpuInfo?.defaultCores ?? 0) > 1 ? "cores" : "core").
+- \(d.vCpuInfo?.defaultThreadsPerCore ?? 0) threads per core.\(gpu)
+- \(d.memoryInfo?.sizeInMiB ?? 0) MiB memory.
+- \(d.networkInfo?.networkPerformance ?? "") network bandwidth.
+"""
         }
     }
+
+//    func describeInstance(ec2: EC2Instance) async throws -> String {
+//        
+//        // https://instances.vantage.sh/
+//        // https://www.convertcsv.com/csv-to-json.htm
+//        
+//        let prompt =
+//"""
+//You are an AWS expert writing a technical textual description for a mobile app. Describe in user friendly terms what is a \(ec2.type) EC2 instance type with key points listed first. Be brief and factual. Just report the top 4 characteristics that have impact on performance. Your response includes first a one line phrase that summarise the strengths, then the four bullet points you choose. Double check the response to ensure it is technically correct.
+//"""
+//        return try await callService {
+//            let claudeResponse = try await self.invokeModel(withId: .claude_instant_v1, prompt: prompt)
+//            return claudeResponse.completion
+//        }
+//    }
     
 /**
     func describeInstanceWithKnowledgeBase(ec2: EC2Instance) async throws -> String {
@@ -291,7 +330,7 @@ You are an AWS expert writing a technical textual description for a mobile app. 
         
         throw BackendError.canNotFindCredentials
     }
-    
+        
     private func invokeModel(withId modelId: BedrockClaudeModel, prompt: String) async throws -> InvokeClaudeResponse {
         
         let params = ClaudeModelParameters(prompt: prompt)
