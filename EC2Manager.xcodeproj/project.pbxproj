@@ -10,11 +10,10 @@
 		00253A002B6E356E00750FB1 /* Bedrock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002539FF2B6E356E00750FB1 /* Bedrock.swift */; };
 		0044348A2B3867FA00C396A9 /* EC2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004434892B3867FA00C396A9 /* EC2View.swift */; };
 		0044348C2B38698D00C396A9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0044348B2B38698D00C396A9 /* ViewModel.swift */; };
-		005714022B7BC9B600380310 /* AWSBedrockRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 005714012B7BC9B600380310 /* AWSBedrockRuntime */; };
-		0057140F2B7BCB5500380310 /* AWSEC2 in Frameworks */ = {isa = PBXBuildFile; productRef = 0057140E2B7BCB5500380310 /* AWSEC2 */; };
+		0052B77F2B865A2D00158B09 /* aws-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0052B77E2B865A2D00158B09 /* aws-dark.png */; };
 		007469DA2B3B2054007A7DEB /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 007469D92B3B2054007A7DEB /* Logging */; };
 		007469E42B3B209E007A7DEB /* Authenticator in Frameworks */ = {isa = PBXBuildFile; productRef = 007469E32B3B209E007A7DEB /* Authenticator */; };
-		007469E92B3B2604007A7DEB /* aws.png in Resources */ = {isa = PBXBuildFile; fileRef = 007469E62B3B2603007A7DEB /* aws.png */; };
+		007469E92B3B2604007A7DEB /* aws-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 007469E62B3B2603007A7DEB /* aws-light.png */; };
 		007469EA2B3B2604007A7DEB /* ubuntu.png in Resources */ = {isa = PBXBuildFile; fileRef = 007469E72B3B2603007A7DEB /* ubuntu.png */; };
 		007469EB2B3B2604007A7DEB /* windows.png in Resources */ = {isa = PBXBuildFile; fileRef = 007469E82B3B2604007A7DEB /* windows.png */; };
 		007469ED2B3B270D007A7DEB /* linux.png in Resources */ = {isa = PBXBuildFile; fileRef = 007469EC2B3B270D007A7DEB /* linux.png */; };
@@ -38,6 +37,8 @@
 		00D4F2832B70CDCA003B8E8B /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 00D4F2822B70CDCA003B8E8B /* AWSPluginsCore */; };
 		00D4F2892B70CDCA003B8E8B /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 00D4F2882B70CDCA003B8E8B /* Amplify */; };
 		00D4F2AE2B70D2C1003B8E8B /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 00D4F2AD2B70D2C1003B8E8B /* AWSCognitoAuthPlugin */; };
+		00DA4B202B88F60B00D1FB40 /* AWSBedrockAgentRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 00DA4B1F2B88F60B00D1FB40 /* AWSBedrockAgentRuntime */; };
+		00DA4B222B88F60B00D1FB40 /* AWSBedrockRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 00DA4B212B88F60B00D1FB40 /* AWSBedrockRuntime */; };
 		4657BC8027104CB13C5149BD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D8D7C1595A9DE591E5211E2A /* awsconfiguration.json */; };
 		EBD76C3B5DE7353249B1C0AA /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A1176872B88582B66ED764FB /* amplifyconfiguration.json */; };
 /* End PBXBuildFile section */
@@ -63,7 +64,8 @@
 		002539FF2B6E356E00750FB1 /* Bedrock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bedrock.swift; sourceTree = "<group>"; };
 		004434892B3867FA00C396A9 /* EC2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EC2View.swift; sourceTree = "<group>"; };
 		0044348B2B38698D00C396A9 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		007469E62B3B2603007A7DEB /* aws.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aws.png; sourceTree = "<group>"; };
+		0052B77E2B865A2D00158B09 /* aws-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aws-dark.png"; sourceTree = "<group>"; };
+		007469E62B3B2603007A7DEB /* aws-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aws-light.png"; sourceTree = "<group>"; };
 		007469E72B3B2603007A7DEB /* ubuntu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ubuntu.png; sourceTree = "<group>"; };
 		007469E82B3B2604007A7DEB /* windows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = windows.png; sourceTree = "<group>"; };
 		007469EC2B3B270D007A7DEB /* linux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linux.png; sourceTree = "<group>"; };
@@ -97,13 +99,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00DA4B222B88F60B00D1FB40 /* AWSBedrockRuntime in Frameworks */,
 				00D4F2892B70CDCA003B8E8B /* Amplify in Frameworks */,
 				00D4F2AE2B70D2C1003B8E8B /* AWSCognitoAuthPlugin in Frameworks */,
-				005714022B7BC9B600380310 /* AWSBedrockRuntime in Frameworks */,
+				00DA4B202B88F60B00D1FB40 /* AWSBedrockAgentRuntime in Frameworks */,
 				00D4F2832B70CDCA003B8E8B /* AWSPluginsCore in Frameworks */,
 				007469E42B3B209E007A7DEB /* Authenticator in Frameworks */,
 				007469DA2B3B2054007A7DEB /* Logging in Frameworks */,
-				0057140F2B7BCB5500380310 /* AWSEC2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +136,8 @@
 		007469E52B3B25BA007A7DEB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				007469E62B3B2603007A7DEB /* aws.png */,
+				007469E62B3B2603007A7DEB /* aws-light.png */,
+				0052B77E2B865A2D00158B09 /* aws-dark.png */,
 				00B7686A2B5E6C4E00FBA087 /* macos.png */,
 				007469EC2B3B270D007A7DEB /* linux.png */,
 				007469E72B3B2603007A7DEB /* ubuntu.png */,
@@ -254,8 +257,8 @@
 				00D4F2822B70CDCA003B8E8B /* AWSPluginsCore */,
 				00D4F2882B70CDCA003B8E8B /* Amplify */,
 				00D4F2AD2B70D2C1003B8E8B /* AWSCognitoAuthPlugin */,
-				005714012B7BC9B600380310 /* AWSBedrockRuntime */,
-				0057140E2B7BCB5500380310 /* AWSEC2 */,
+				00DA4B1F2B88F60B00D1FB40 /* AWSBedrockAgentRuntime */,
+				00DA4B212B88F60B00D1FB40 /* AWSBedrockRuntime */,
 			);
 			productName = EC2Manager;
 			productReference = 008C55422B365C5600317701 /* EC2Manager.app */;
@@ -332,8 +335,8 @@
 			packageReferences = (
 				007469D82B3B2054007A7DEB /* XCRemoteSwiftPackageReference "swift-log" */,
 				007469E22B3B209E007A7DEB /* XCRemoteSwiftPackageReference "amplify-ui-swift-authenticator" */,
-				005713F62B7BC99B00380310 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
 				005714032B7BC9FD00380310 /* XCRemoteSwiftPackageReference "amplify-swift" */,
+				00DA4B1E2B88F5F100D1FB40 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
 			);
 			productRefGroup = 008C55432B365C5600317701 /* Products */;
 			projectDirPath = "";
@@ -354,8 +357,9 @@
 				00B7686B2B5E6C4E00FBA087 /* macos.png in Resources */,
 				009DF62B2B847F4800A86F42 /* 00_common.sh in Resources */,
 				009DF62C2B847F4800A86F42 /* 04_local_tests.sh in Resources */,
-				007469E92B3B2604007A7DEB /* aws.png in Resources */,
+				007469E92B3B2604007A7DEB /* aws-light.png in Resources */,
 				009DF6322B847F4800A86F42 /* 03_build.sh in Resources */,
+				0052B77F2B865A2D00158B09 /* aws-dark.png in Resources */,
 				007469ED2B3B270D007A7DEB /* linux.png in Resources */,
 				009DF62F2B847F4800A86F42 /* 06_deploy_testflight.sh in Resources */,
 				007469EB2B3B2604007A7DEB /* windows.png in Resources */,
@@ -563,7 +567,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 20240221000000;
 				DEVELOPMENT_ASSET_PATHS = "\"EC2Manager/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 56U756R2L2;
@@ -605,7 +609,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 20240221000000;
 				DEVELOPMENT_ASSET_PATHS = "\"EC2Manager/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 56U756R2L2;
@@ -755,14 +759,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		005713F62B7BC99B00380310 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
-			requirement = {
-				kind = exactVersion;
-				version = 0.31.0;
-			};
-		};
 		005714032B7BC9FD00380310 /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
@@ -787,19 +783,17 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		00DA4B1E2B88F5F100D1FB40 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 0.36.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		005714012B7BC9B600380310 /* AWSBedrockRuntime */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 005713F62B7BC99B00380310 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
-			productName = AWSBedrockRuntime;
-		};
-		0057140E2B7BCB5500380310 /* AWSEC2 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 005713F62B7BC99B00380310 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
-			productName = AWSEC2;
-		};
 		007469D92B3B2054007A7DEB /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 007469D82B3B2054007A7DEB /* XCRemoteSwiftPackageReference "swift-log" */;
@@ -821,6 +815,16 @@
 		00D4F2AD2B70D2C1003B8E8B /* AWSCognitoAuthPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AWSCognitoAuthPlugin;
+		};
+		00DA4B1F2B88F60B00D1FB40 /* AWSBedrockAgentRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00DA4B1E2B88F5F100D1FB40 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSBedrockAgentRuntime;
+		};
+		00DA4B212B88F60B00D1FB40 /* AWSBedrockRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00DA4B1E2B88F5F100D1FB40 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSBedrockRuntime;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
