@@ -11,7 +11,7 @@ import Amplify
 
 @MainActor
 final class ViewModel: ObservableObject {
-    
+        
     enum AppState: Equatable {
         static func == (lhs: ViewModel.AppState, rhs: ViewModel.AppState) -> Bool {
             switch (lhs, rhs) {
@@ -132,8 +132,8 @@ final class ViewModel: ObservableObject {
     }
     
         
-    func imageFor(_ ec2: EC2Instance) -> URL? {
-        let fileName = if ec2.os.starts(with: "Amazon Linux") { "aws" }
+    func imageFor(_ ec2: EC2Instance, for colorScheme: ColorScheme) -> URL? {
+        let fileName = if ec2.os.starts(with: "Amazon Linux") { colorScheme == .dark ? "aws-dark" : "aws-light" }
         else if ec2.os.starts(with: "Ubuntu") { "ubuntu" }
         else if ec2.os.starts(with: "Windows") { "windows" }
         else if ec2.os.starts(with: "macOS") { "macos" }

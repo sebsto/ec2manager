@@ -245,6 +245,7 @@ struct Backend {
             
             let gpu = d.gpuInfo?.gpus?.count ?? 0 >= 1 ? "\n- \(d.gpuInfo?.gpus?.count ?? 0) GPU from \(d.gpuInfo?.gpus?[0].manufacturer ?? "") (\(d.gpuInfo?.gpus?[0].name ?? "")) with \(d.gpuInfo?.gpus?[0].memoryInfo?.sizeInMiB ?? 0) MiB memory" : ""
             
+            // TODO: return raw data and let the ViewModel create the presentation view
             return """
 A \(ec2.type) instance is has the following characteristics:
 
@@ -312,6 +313,10 @@ A \(ec2.type) instance is has the following characteristics:
         return EC2Client(config: config)
     }
     
+    //TODO: replace with the new AWS SDK STS Credentials provider ?
+    
+    // Authentication happens with Amplify. EC2 API are exposed through AWS SDK and AWS SDK doesn't consume Amplify's credendentials classes.
+    // This method converts Amplify's credentials to a CrednetialProvider class that the AWS SDK can consume
     private func getCredentialsProvider() async throws -> AWSClientRuntime.CredentialsProviding {
         
         // get amplify session

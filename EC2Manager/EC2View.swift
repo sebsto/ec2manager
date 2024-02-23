@@ -82,11 +82,13 @@ struct EC2ListView: View {
 struct EC2View: View {
     
     @EnvironmentObject var model: ViewModel
+    @Environment(\.colorScheme) var colorScheme
+
     let ec2: EC2Instance
     
     var body: some View {
         HStack {
-            AsyncImage(url: model.imageFor(ec2)) { image in
+            AsyncImage(url: model.imageFor(ec2, for: colorScheme)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -115,7 +117,6 @@ struct EC2View: View {
                     Text(ec2.ip)
                 }
             }
-            .foregroundColor(.black)
         }
     }
 }
@@ -143,12 +144,14 @@ extension EC2Instance {
 struct EC2DescriptionView: View {
     
     @EnvironmentObject var model: ViewModel
+    @Environment(\.colorScheme) var colorScheme
+
     let ec2: EC2Instance
     @State var description : String? = nil
     
     var body: some View {
         VStack {
-            AsyncImage(url: model.imageFor(ec2)) { image in
+            AsyncImage(url: model.imageFor(ec2, for: colorScheme)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -181,6 +184,7 @@ struct EC2DescriptionView: View {
                 Spacer()
                 ProgressView {
                     Text("Loading the description")
+                        .foregroundStyle(colorScheme == .dark ? .white : .gray)
                 }
                 .task {
                     // trigger description loading here
