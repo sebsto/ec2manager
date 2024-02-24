@@ -17,9 +17,7 @@ import AWSClientRuntime
 import AwsCommonRuntimeKit // to access runtime errors
 import AWSEC2
 import AWSBedrockRuntime
-
-//import AWSSotoSigner
-//import BedrockMiniSDK
+import AWSBedrockAgentRuntime
 
 import ClientRuntime // to control verbosity of AWS SDK
 
@@ -54,8 +52,10 @@ struct Backend {
         
         Amplify.Logging.logLevel = .info
         
-        // control verbosity of AWS SDK
-        SDKLoggingSystem.initialize(logLevel: .warning)
+        Task {
+            // control verbosity of AWS SDK
+            await SDKLoggingSystem.initialize(logLevel: .warning)
+        }
         
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
@@ -218,7 +218,7 @@ struct Backend {
         }
     }
     
-    func describeInstance(ec2: EC2Instance) async throws -> String {
+    func describeInstanceAPI(ec2: EC2Instance) async throws -> String {
         
         return try await callService {
             
@@ -259,53 +259,62 @@ A \(ec2.type) instance is has the following characteristics:
         }
     }
 
-//    func describeInstance(ec2: EC2Instance) async throws -> String {
-//        
-//        // https://instances.vantage.sh/
-//        // https://www.convertcsv.com/csv-to-json.htm
-//        
-//        let prompt =
-//"""
-//You are an AWS expert writing a technical textual description for a mobile app. Describe in user friendly terms what is a \(ec2.type) EC2 instance type with key points listed first. Be brief and factual. Just report the top 4 characteristics that have impact on performance. Your response includes first a one line phrase that summarise the strengths, then the four bullet points you choose. Double check the response to ensure it is technically correct.
-//"""
-//        return try await callService {
-//            let claudeResponse = try await self.invokeModel(withId: .claude_instant_v1, prompt: prompt)
-//            return claudeResponse.completion
-//        }
-//    }
-    
-/**
-    func describeInstanceWithKnowledgeBase(ec2: EC2Instance) async throws -> String {
-//        let request = AWSBedrockAgentRuntime.  // not available in SDK 0.31. Available in SDK 0.34
+    func describeInstanceLLM(ec2: EC2Instance) async throws -> String {
         
-        // get amplify session
-        let session = try await Amplify.Auth.fetchAuthSession()
+        // https://instances.vantage.sh/
+        // https://www.convertcsv.com/csv-to-json.htm
         
-        //check if this is a CredentialsProvider and fetch temporary credentials
-        guard let awsCredentialsProvider = session as? AuthAWSCredentialsProvider,
-              let amplifyCredentials = try awsCredentialsProvider.getAWSCredentials().get() as? AWSTemporaryCredentials else {
+        let prompt =
+"""
+You are an AWS expert writing a technical textual description for a mobile app. Describe in user friendly terms what is a \(ec2.type) EC2 instance type with key points listed first. Be brief and factual. Just report the top 4 characteristics that have impact on performance. Your response includes first a one line phrase that summarise the strengths, then the four bullet points you choose. Double check the response to ensure it is technically correct.
+"""
+        return try await callService {
+            let params = ClaudeModelParameters(prompt: prompt)
+            let body: Data = try self.encode(params)
+    //        logger.debug("\(String(data: body, encoding: .utf8) ?? "")")
+            let request = InvokeModelInput(body: body,
+                                           contentType: "application/json",
+                                           modelId: BedrockClaudeModel.claude_instant_v1.rawValue)
+            let config = try await BedrockRuntimeClient
+                .BedrockRuntimeClientConfiguration(credentialsProvider: getCredentialsProvider(),
+                                                   region: "us-east-1")
+            let client = BedrockRuntimeClient(config: config)
+            let response = try await client.invokeModel(input: request)
             
-            throw BackendError.canNotFindCredentials
-        }
+            guard response.contentType == "application/json",
+                  let data = response.body else {
+                logger.error("Invalid Bedrock response: \(response)")
+                throw BedrockError.invalidResponse(response.body)
+            }
+            let result = try self.decode(data) as InvokeClaudeResponse
+            return result.completion
 
-        let creds = StaticCredential(accessKeyId: amplifyCredentials.accessKeyId,
-                                     secretAccessKey: amplifyCredentials.secretAccessKey,
-                                     sessionToken: amplifyCredentials.sessionToken)
-        let sdk : BedrockSDK = BedrockMiniSDK(withCredential: creds)
-
-        do {
-            let response = try await sdk.invokeKnowledgeBase(withId: "VO5GN6JHSU",
-                                                             prompt: "You're a skilled AWS expert. Describe what is an \(ec2.type) EC2 instance type. Your response includes the amount of memory, the number of vCPU, and the networking performance",
-                                                             modelArn: ClaudeModelArn.instant.rawValue)
-            // print(response)
-            // print("")
-           return response.output.text
-        } catch {
-            print(error)
-            throw BackendError.serviceError(error, "Fail to call knoweldge base")
         }
     }
- */
+    
+    func describeInstanceKB(ec2: EC2Instance) async throws -> String? {
+        
+        let prompt = "You're a skilled AWS expert. Describe what is an \(ec2.type) EC2 instance type. Your response includes the amount of memory, the number of vCPU, and the networking performance"
+        
+        return try await callService {
+            
+            let region = "us-east-1"
+            let model = BedrockClaudeModel.claude_instant_v1
+            let modelArn = "arn:aws:bedrock:\(region)::foundation-model/\(model.rawValue)"
+            let request = RetrieveAndGenerateInput(input: .init(text: prompt),
+                                                   retrieveAndGenerateConfiguration: .init(knowledgeBaseConfiguration: .init(knowledgeBaseId: "VO5GN6JHSU",
+                                                                                                                             modelArn: modelArn),
+                                                                                           type: .knowledgeBase) )
+            
+            let config = try await BedrockAgentRuntimeClient
+                .BedrockAgentRuntimeClientConfiguration(credentialsProvider: getCredentialsProvider(),
+                                                        region: region)
+            let client = BedrockAgentRuntimeClient(config: config)
+            let response = try await client.retrieveAndGenerate(input: request)
+            
+            return response.output?.text
+        }
+    }
     
     private func ec2Client() async throws -> EC2Client  {
         let config = try await EC2Client.EC2ClientConfiguration(region: region, credentialsProvider: getCredentialsProvider())
@@ -323,41 +332,19 @@ A \(ec2.type) instance is has the following characteristics:
         let session = try await Amplify.Auth.fetchAuthSession()
         
         //check if this is a CredentialsProvider and fetch temporary credentials
-        if let awsCredentialsProvider = session as? AuthAWSCredentialsProvider,
-           let amplifyCredentials = try awsCredentialsProvider.getAWSCredentials().get() as? AWSTemporaryCredentials {
-            
-            // create an AWS SDK static credentials provider with the temporary credentials
-            return try StaticCredentialsProvider(Credentials(accessKey: amplifyCredentials.accessKeyId,
-                                                                      secret: amplifyCredentials.secretAccessKey,
-                                                                      expirationTimeout: amplifyCredentials.expiration,
-                                                                      sessionToken: amplifyCredentials.sessionToken))
+        guard let awsCredentialsProvider = session as? AuthAWSCredentialsProvider,
+              let amplifyCredentials = try awsCredentialsProvider.getAWSCredentials().get() as? AWSTemporaryCredentials else {
+
+            throw BackendError.canNotFindCredentials
         }
         
-        throw BackendError.canNotFindCredentials
+        // create an AWS SDK static credentials provider with the temporary credentials
+        return try StaticCredentialsProvider(Credentials(accessKey: amplifyCredentials.accessKeyId,
+                                                                  secret: amplifyCredentials.secretAccessKey,
+                                                                  expirationTimeout: amplifyCredentials.expiration,
+                                                                  sessionToken: amplifyCredentials.sessionToken))
     }
         
-    private func invokeModel(withId modelId: BedrockClaudeModel, prompt: String) async throws -> InvokeClaudeResponse {
-        
-        let params = ClaudeModelParameters(prompt: prompt)
-        let body: Data = try self.encode(params)
-//        logger.debug("\(String(data: body, encoding: .utf8) ?? "")")
-        let request = InvokeModelInput(body: body,
-                                       contentType: "application/json",
-                                       modelId: modelId.rawValue)
-        let config = try await BedrockRuntimeClient
-            .BedrockRuntimeClientConfiguration(credentialsProvider: getCredentialsProvider(),
-                                               region: "us-east-1")
-        let client = BedrockRuntimeClient(config: config)
-        let response = try await client.invokeModel(input: request)
-        
-        guard response.contentType == "application/json",
-              let data = response.body else {
-            logger.error("Invalid Bedrock response: \(response)")
-            throw BedrockError.invalidResponse(response.body)
-        }
-        return try self.decode(data)
-    }
-    
     private func decode<T: Decodable>(_ data: Data) throws -> T {
         let decoder = JSONDecoder()
         return try decoder.decode(T.self, from: data)
