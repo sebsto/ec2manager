@@ -147,10 +147,51 @@ struct EC2DescriptionView: View {
     @Environment(\.colorScheme) var colorScheme
 
     let ec2: EC2Instance
-    @State var description : String? = nil
+    @State var description : [ViewModel.InstanceDescriptionType : String] = [:]
     
     var body: some View {
+        TabView {
+            description(for: .api)
+                .tabItem {
+                    Label("API", systemImage: "doc.text")
+                }
+                .task {
+                    // trigger description loading here
+                    await loadEC2InstanceDescription(for: .api)
+
+                }
+            description(for: .llm)
+                .tabItem {
+                    Label("LLM", systemImage: "text.bubble")
+                }
+                .task {
+                    // trigger description loading here
+                    await loadEC2InstanceDescription(for: .llm)
+
+                }
+            description(for: .kb)
+                .tabItem {
+                    Label("KB", systemImage: "text.magnifyingglass")
+                }
+                .task {
+                    // trigger description loading here
+                    await loadEC2InstanceDescription(for: .kb)
+                }
+        }
+    }
+
+    func loadEC2InstanceDescription(for type: ViewModel.InstanceDescriptionType) async {
+        if description[type] == nil {
+            print("Loading \(type.rawValue) description for \(ec2.type)")
+            description[type] = await model.instanceDescription(ec2, type: type)
+            print(description[type]!)
+        }
+    }
+    
+    @ViewBuilder
+    func description(for type: ViewModel.InstanceDescriptionType) -> some View {
         VStack {
+            
             AsyncImage(url: model.imageFor(ec2, for: colorScheme)) { image in
                 image
                     .resizable()
@@ -177,27 +218,19 @@ struct EC2DescriptionView: View {
                 .font(.title)
                 .padding()
             
-            if let description {
-                Text(description)
-                    .padding()
+            if let description = description[type] {
+                ScrollView {
+                    Text(description)
+                }
+                .padding()
             } else {
                 Spacer()
                 ProgressView {
                     Text("Loading the description")
                         .foregroundStyle(colorScheme == .dark ? .white : .gray)
                 }
-                .task {
-                    // trigger description loading here
-                    if description == nil {
-                        print("Loading description for \(ec2.type)")
-                        description = await model.instanceDescription(ec2)
-                        print(description ?? "no description")
-                    }
-                }
                 Spacer()
             }
-            
-            Spacer()
         }
     }
 }

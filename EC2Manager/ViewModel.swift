@@ -141,10 +141,17 @@ final class ViewModel: ObservableObject {
         return Bundle.main.url(forResource: fileName, withExtension: "png")
     }
     
-    func instanceDescription(_ ec2: EC2Instance) async -> String {
-//        return "not implemented yet"
-        return (try? await backend?.describeInstance(ec2: ec2)) ?? "no description"
-//        return (try? await backend?.describeInstanceWithKnowledgeBase(ec2: ec2)) ?? "no description"
+    enum InstanceDescriptionType: String {
+        case api
+        case kb
+        case llm
+    }
+    func instanceDescription(_ ec2: EC2Instance, type: InstanceDescriptionType) async -> String {
+        switch type {
+        case .api: (try? await backend?.describeInstanceAPI(ec2: ec2)) ?? "no description from API"
+        case .kb: (try? await backend?.describeInstanceKB(ec2: ec2)) ?? "no description from knowledge base"
+        case .llm: (try? await backend?.describeInstanceLLM(ec2: ec2)) ?? "no description from LLM"
+        }
     }
 }
 
@@ -185,7 +192,7 @@ extension Array<EC2Instance> {
 }
 
 // Mocked EC2 Descriptiion
-let mockedDescription =
+let mockedDescription: [ViewModel.InstanceDescriptionType: String] = .init(dictionaryLiteral: (.api,
 """
 A powerful virtual server for demanding enterprise workloads.
 
@@ -194,6 +201,7 @@ A powerful virtual server for demanding enterprise workloads.
 - Optimized for memory-intensive applications and high performance computing
 - SSD-backed ephemeral storage providing very high IOPS/throughput
 """
+))
 
 // Mocked User
 struct MockedUser: AuthUser {
