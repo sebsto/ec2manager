@@ -39,6 +39,7 @@
 		00D4F2AE2B70D2C1003B8E8B /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 00D4F2AD2B70D2C1003B8E8B /* AWSCognitoAuthPlugin */; };
 		00DA4B202B88F60B00D1FB40 /* AWSBedrockAgentRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 00DA4B1F2B88F60B00D1FB40 /* AWSBedrockAgentRuntime */; };
 		00DA4B222B88F60B00D1FB40 /* AWSBedrockRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 00DA4B212B88F60B00D1FB40 /* AWSBedrockRuntime */; };
+		00DA4B242B89E7FD00D1FB40 /* AWSEC2 in Frameworks */ = {isa = PBXBuildFile; productRef = 00DA4B232B89E7FD00D1FB40 /* AWSEC2 */; };
 		4657BC8027104CB13C5149BD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D8D7C1595A9DE591E5211E2A /* awsconfiguration.json */; };
 		EBD76C3B5DE7353249B1C0AA /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A1176872B88582B66ED764FB /* amplifyconfiguration.json */; };
 /* End PBXBuildFile section */
@@ -102,6 +103,7 @@
 				00DA4B222B88F60B00D1FB40 /* AWSBedrockRuntime in Frameworks */,
 				00D4F2892B70CDCA003B8E8B /* Amplify in Frameworks */,
 				00D4F2AE2B70D2C1003B8E8B /* AWSCognitoAuthPlugin in Frameworks */,
+				00DA4B242B89E7FD00D1FB40 /* AWSEC2 in Frameworks */,
 				00DA4B202B88F60B00D1FB40 /* AWSBedrockAgentRuntime in Frameworks */,
 				00D4F2832B70CDCA003B8E8B /* AWSPluginsCore in Frameworks */,
 				007469E42B3B209E007A7DEB /* Authenticator in Frameworks */,
@@ -259,6 +261,7 @@
 				00D4F2AD2B70D2C1003B8E8B /* AWSCognitoAuthPlugin */,
 				00DA4B1F2B88F60B00D1FB40 /* AWSBedrockAgentRuntime */,
 				00DA4B212B88F60B00D1FB40 /* AWSBedrockRuntime */,
+				00DA4B232B89E7FD00D1FB40 /* AWSEC2 */,
 			);
 			productName = EC2Manager;
 			productReference = 008C55422B365C5600317701 /* EC2Manager.app */;
@@ -825,6 +828,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 00DA4B1E2B88F5F100D1FB40 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
 			productName = AWSBedrockRuntime;
+		};
+		00DA4B232B89E7FD00D1FB40 /* AWSEC2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00DA4B1E2B88F5F100D1FB40 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSEC2;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
