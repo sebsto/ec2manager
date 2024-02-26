@@ -10,7 +10,7 @@ Solution : install as a Dameon
 ```sh
 sudo bash 
 
-RUNNER_NAME=actions.runner.ec2manager
+RUNNER_NAME=github.runner.ec2manager
 cat << EOF > /Library/LaunchDaemons/$RUNNER_NAME.plist
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -20,7 +20,7 @@ cat << EOF > /Library/LaunchDaemons/$RUNNER_NAME.plist
     <string>actions-runner-ec2manager</string>
     <key>ProgramArguments</key>
     <array>
-      <string>/Users/ec2-user/ec2manager-action-runner/run.sh</string>
+      <string>/Users/ec2-user/actions-runner-ec2manager/run.sh</string>
     </array>
     <key>KeepAlive</key>
     <dict>
@@ -32,13 +32,13 @@ cat << EOF > /Library/LaunchDaemons/$RUNNER_NAME.plist
     <key>GroupName</key>
     <string>staff</string>  
     <key>WorkingDirectory</key>
-    <string>/Users/ec2-user/ec2manager-action-runner</string>
+    <string>/Users/ec2-user/actions-runner-ec2manager</string>
     <key>RunAtLoad</key>
     <true/>    
     <key>StandardOutPath</key>
-    <string>/Users/ec2-user/ec2manager-action-runner/stdout.log</string>
+    <string>/Users/ec2-user/actions-runner-ec2manager/stdout.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/ec2-user/ec2manager-action-runner/stderr.log</string>
+    <string>/Users/ec2-user/actions-runner-ec2manager/stderr.log</string>
     <key>EnvironmentVariables</key>
     <dict> 
       <key>ACTIONS_RUNNER_SVC</key>
